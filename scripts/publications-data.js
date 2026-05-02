@@ -19,13 +19,13 @@
     image: { src: "images/count_counts_teaser.png", alt: "Count Counts teaser" },
     title: "Count Counts: Motivating Exploration in LLM Reasoning with Count-based Intrinsic Rewards",
     authors: "<strong>Xuan Zhang</strong>, Ruixiao Li, Zhijian Zhou, Long Li, Yulei Qin, Ke Li, Xing Sun, Xiaoyu Tan, Chao Qu, Yuan Qi.",
+    venue: '<span class="venue venue-iclr">ICLR</span>, 2026',
     links: [
-      { href: "https://arxiv.org/abs/2510.16614", text: "arXiv", className: "arxiv", icon: "ai ai-arxiv" }
+      { href: "https://openreview.net/forum?id=9xIBbfItGP", text: "paper", className: "project", icon: "fa fa-file-text-o" }
     ],
     extraHtml: `
       <p></p>
       <br>
-      <a href="https://arxiv.org/abs/2510.16614" target="_blank"><img src="http://img.shields.io/badge/cs.AI-arXiv%3A2510.16614-B31B1B.svg" /></a>
       ${citationBadge("u5HHmVD_uO8C")}
     `
   };
