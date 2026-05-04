@@ -16,7 +16,7 @@
   `;
 
   const countCounts = {
-    image: { src: "images/count_counts_teaser.png", alt: "Count Counts teaser" },
+    image: { src: "images/favicon/count.png", alt: "Count Counts teaser" },
     title: "Count Counts: Motivating Exploration in LLM Reasoning with Count-based Intrinsic Rewards",
     authors: "<strong>Xuan Zhang</strong>, Ruixiao Li, Zhijian Zhou, Long Li, Yulei Qin, Ke Li, Xing Sun, Xiaoyu Tan, Chao Qu, Yuan Qi.",
     venue: '<span class="venue venue-iclr">ICLR</span>, 2026',
@@ -31,7 +31,7 @@
   };
 
   const diffusionReasoner = {
-    image: { src: "images/diffusion_reasoner_teaser.png", alt: "Diffusion Reasoner teaser" },
+    image: { src: "images/favicon/diffusion.png", alt: "Diffusion Reasoner teaser" },
     title: "Constraints-Guided Diffusion Reasoner for Neuro-Symbolic Learning",
     authors: "<strong>Xuan Zhang</strong>, Zhijian Zhou, Weidi Xu, Yanting Miao, Chao Qu, Yuan Qi.",
     venue: '<span class="venue venue-aaai">AAAI</span>, 2026',
