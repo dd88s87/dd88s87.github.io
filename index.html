@@ -18,7 +18,9 @@
         <a class="nav-brand" href="#top">Xuan Zhang</a>
         <div class="nav-links">
           <a href="#biography-section">Biography</a>
-          <a href="#selected-works-section">Publications</a>
+          <a href="#selected-works-section">Selected Works</a>
+          <a href="#selected-awards-section">Awards</a>
+          <a href="#research-experience-section">Experience</a>
         </div>
       </div>
     </nav>
@@ -42,12 +44,31 @@
           <table class="section-table" id="selected-works-section"><tbody>
             <tr>
               <td class="section-cell">
-                <h2>Publications</h2>
+                <h2>Selected Works</h2>
               </td>
             </tr>
           </tbody></table>
 
           <table class="section-table pub-table"><tbody id="selected-works"></tbody></table>
+
+          <table class="section-table" id="selected-awards-section"><tbody>
+            <tr>
+              <td class="section-cell">
+                <h2>Selected Awards</h2>
+                <div id="selected-awards"></div>
+              </td>
+            </tr>
+          </tbody></table>
+
+          <table class="section-table" id="research-experience-section"><tbody>
+            <tr>
+              <td class="section-cell">
+                <h2>Research Experience</h2>
+              </td>
+            </tr>
+          </tbody></table>
+
+          <table class="section-table"><tbody id="research-experience"></tbody></table>
 
         </div>
       </div>
@@ -55,8 +76,133 @@
 
   <script src="scripts/publications-data.js"></script>
   <script src="scripts/intro-data.js"></script>
+  <script src="scripts/awards-data.js"></script>
+  <script src="scripts/research-experience-data.js"></script>
   <script src="scripts/publications-render.js"></script>
   <script src="scripts/sections-render.js"></script>
+
+  <script>
+    (() => {
+      const GS_DATA_URLS = [
+        "https://raw.githubusercontent.com/dd88s87/assets/google-scholar-stats/gs_data.json"
+      ];
+      const CACHE_KEY = "gs_data_cache_v2";
+      const CACHE_TTL_MS = 12 * 60 * 60 * 1000;
+      const REQUEST_TIMEOUT_MS = 3500;
+      const FALLBACK_TEXT = "--";
+
+      const getCitationElements = () =>
+        Array.from(document.getElementsByClassName("show_paper_citations"));
+
+      const renderCitations = (data) => {
+        const publications = data && data.publications ? data.publications : {};
+        getCitationElements().forEach((element) => {
+          const paperId = element.getAttribute("data");
+          const numCitations =
+            publications[paperId] && publications[paperId].num_citations != null
+              ? publications[paperId].num_citations
+              : FALLBACK_TEXT;
+          element.textContent = String(numCitations);
+        });
+      };
+
+      const loadCache = () => {
+        try {
+          const raw = localStorage.getItem(CACHE_KEY);
+          if (!raw) {
+            return null;
+          }
+          const parsed = JSON.parse(raw);
+          if (!parsed || typeof parsed.ts !== "number" || !parsed.data) {
+            return null;
+          }
+          return parsed;
+        } catch (_error) {
+          return null;
+        }
+      };
+
+      const saveCache = (data) => {
+        try {
+          localStorage.setItem(
+            CACHE_KEY,
+            JSON.stringify({
+              ts: Date.now(),
+              data
+            })
+          );
+        } catch (_error) {
+          // Ignore storage failures.
+        }
+      };
+
+      const fetchJsonWithTimeout = async (url, timeoutMs) => {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), timeoutMs);
+        try {
+          const response = await fetch(url, {
+            cache: "no-store",
+            signal: controller.signal
+          });
+          if (!response.ok) {
+            throw new Error(`Request failed: ${response.status}`);
+          }
+          return await response.json();
+        } finally {
+          clearTimeout(timeout);
+        }
+      };
+
+      const fetchGsData = async () => {
+        for (const url of GS_DATA_URLS) {
+          try {
+            return await fetchJsonWithTimeout(url, REQUEST_TIMEOUT_MS);
+          } catch (_error) {
+            // Try the next mirror.
+          }
+        }
+        throw new Error("Failed to fetch citation data.");
+      };
+
+      const refreshCitationsInBackground = async () => {
+        try {
+          const data = await fetchGsData();
+          renderCitations(data);
+          saveCache(data);
+        } catch (_error) {
+          // Keep cached or fallback values.
+        }
+      };
+
+      const initCitations = async () => {
+        const cached = loadCache();
+        const hasCachedData = Boolean(cached && cached.data);
+
+        if (hasCachedData) {
+          renderCitations(cached.data);
+        } else {
+          renderCitations(null);
+        }
+
+        const cacheIsFresh =
+          hasCachedData && Date.now() - cached.ts < CACHE_TTL_MS;
+        if (cacheIsFresh) {
+          refreshCitationsInBackground();
+          return;
+        }
+
+        await refreshCitationsInBackground();
+      };
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initCitations, {
+          once: true
+        });
+      } else {
+        initCitations();
+      }
+    })();
+  </script>
 
   </body>
 </html>

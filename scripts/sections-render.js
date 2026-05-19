@@ -1,4 +1,15 @@
 (() => {
+  const highlightAuthor = (html) => {
+    let text = String(html).replace(
+      /<strong>Xuan Zhang<\/strong>/g,
+      '<span class="author-me">Xuan Zhang</span>'
+    );
+    if (!text.includes("author-me")) {
+      text = text.replace(/\bXuan Zhang\b/g, '<span class="author-me">Xuan Zhang</span>');
+    }
+    return text;
+  };
+
   const renderIntro = (data, targetId) => {
     const container = document.getElementById(targetId);
     if (!container || !data) {
@@ -57,6 +68,56 @@
     container.innerHTML = paragraphs;
   };
 
+  const renderAwards = (items, targetId) => {
+    const container = document.getElementById(targetId);
+    if (!container) {
+      return;
+    }
+
+    container.innerHTML = (items || [])
+      .map((item) => `<p>&bull; ${item}</p>`)
+      .join("");
+  };
+
+  const renderResearchExperience = (items, targetId) => {
+    const container = document.getElementById(targetId);
+    if (!container) {
+      return;
+    }
+
+    container.innerHTML = (items || [])
+      .map((item) => {
+        const mentorLabel = item.mentorLabel || "Mentor";
+        const mentorHtml = item.mentorsHtml
+          ? `\n              <br>\n              <strong>${mentorLabel}</strong>: ${item.mentorsHtml}`
+          : "";
+
+        return `
+          <tr>
+            <td class="thumb-cell">
+              <a href="${item.logo.src}"><img class="org-logo" src="${item.logo.src}" alt="${item.logo.alt || ""}"></a>
+            </td>
+            <td class="content-cell">
+              <span class="org-title">${item.title}</span>
+              <br>
+              <br>
+              <strong>Topic</strong>: ${item.topic}
+              ${mentorHtml}
+              <br>
+              <br>
+              ${item.location}
+              <br>
+              ${item.dates}
+              <br>
+            </td>
+          </tr>
+        `;
+      })
+      .join("");
+  };
+
+  renderAwards(window.awardsData, "selected-awards");
+  renderResearchExperience(window.researchExperienceData, "research-experience");
   renderIntro(window.introData, "intro-sidebar");
   renderBiography(window.introData, "biography-content");
 
