@@ -16,7 +16,6 @@
   `;
 
   const disppo = {
-    image: { src: "images/favicon/diffusion.png", alt: "DisPPO teaser" },
     title: "DisPPO: Quantile-Based Distributional Reinforcement Learning for Large Language Models",
     authors: "Zhijian Zhou<sup>#</sup>, Long Li<sup>#</sup>, <strong>Xuan Zhang</strong><sup>#</sup>, Zongkai Liu, Yanting Miao, Yuchen Liu, Deshu Chen, Ke Li, Xing Sun, Ruixiao Jiang<sup>*</sup>, Xiaoyu Tan<sup>*</sup>, Chao Qu<sup>*</sup>, Yuan Qi<sup>*</sup>.",
     venue: '<span class="venue venue-icml">ICML</span>, 2026',
@@ -47,7 +46,6 @@
   };
 
   const spear = {
-    image: { src: "images/favicon/count.png", alt: "SPEAR teaser" },
     title: "Learn the Ropes, Then Trust the Wins: Self-imitation with Progressive Exploration for Agentic Reinforcement Learning",
     authors: "Yulei Qin, Xiaoyu Tan, Zhengbao He, Gang Li, Haojia Lin, Zongyi Li, Zihan Xu, Yuchen Shi, Siqi Cai, Renting Rui, Shaofei Cai, Yuzheng Cai, <strong>Xuan Zhang</strong>, Sheng Ye, Ke Li, Xing Sun.",
     venue: '<span class="venue venue-iclr">ICLR</span>, 2026',
@@ -78,7 +76,6 @@
   };
 
   const guidingDiffusion = {
-    image: { src: "images/favicon/diffusion.png", alt: "Guiding Diffusion teaser" },
     title: "Guiding Diffusion Models with Reinforcement Learning for Stable Molecule Generation",
     authors: "Zhijian Zhou, Junyi An, Zongkai Liu, Yun-Fei Shi, Fenglei Cao, <strong>Xuan Zhang</strong>, Wenli Wang, Chao Qu, Yuan Qi.",
     links: [

@@ -1,15 +1,4 @@
 (() => {
-  const highlightAuthor = (html) => {
-    let text = String(html).replace(
-      /<strong>Xuan Zhang<\/strong>/g,
-      '<span class="author-me">Xuan Zhang</span>'
-    );
-    if (!text.includes("author-me")) {
-      text = text.replace(/\bXuan Zhang\b/g, '<span class="author-me">Xuan Zhang</span>');
-    }
-    return text;
-  };
-
   const renderIntro = (data, targetId) => {
     const container = document.getElementById(targetId);
     if (!container || !data) {
@@ -35,12 +24,7 @@
     });
 
     const linksHtml = linkItems
-      .map((item, index) => {
-        if (index === 0) {
-          return item;
-        }
-        return `<span class="link-sep">|</span>${item}`;
-      })
+      .map((item, index) => (index === 0 ? item : `<span class="link-sep">|</span>${item}`))
       .join("");
 
     const avatarHtml = data.avatar && data.avatar.src
@@ -62,10 +46,9 @@
     if (!container || !data) {
       return;
     }
-    const paragraphs = (data.bioParagraphs || [])
+    container.innerHTML = (data.bioParagraphs || [])
       .map((paragraph) => `<p>${paragraph}</p>`)
       .join("");
-    container.innerHTML = paragraphs;
   };
 
   const renderAwards = (items, targetId) => {
@@ -73,7 +56,6 @@
     if (!container) {
       return;
     }
-
     container.innerHTML = (items || [])
       .map((item) => `<p>&bull; ${item}</p>`)
       .join("");
@@ -84,42 +66,35 @@
     if (!container) {
       return;
     }
-
     container.innerHTML = (items || [])
       .map((item) => {
         const mentorLabel = item.mentorLabel || "Mentor";
         const mentorHtml = item.mentorsHtml
-          ? `\n              <br>\n              <strong>${mentorLabel}</strong>: ${item.mentorsHtml}`
+          ? `<br><strong>${mentorLabel}</strong>: ${item.mentorsHtml}`
           : "";
+        const logoSrc = item.logo && item.logo.src ? item.logo.src : "";
+        const logoAlt = item.logo && item.logo.alt ? item.logo.alt : "";
 
         return `
           <tr>
             <td class="thumb-cell">
-              <a href="${item.logo.src}"><img class="org-logo" src="${item.logo.src}" alt="${item.logo.alt || ""}"></a>
+              <img class="org-logo" src="${logoSrc}" alt="${logoAlt}">
             </td>
             <td class="content-cell">
               <span class="org-title">${item.title}</span>
-              <br>
-              <br>
+              <br><br>
               <strong>Topic</strong>: ${item.topic}
               ${mentorHtml}
-              <br>
-              <br>
+              <br><br>
               ${item.location}
               <br>
               ${item.dates}
-              <br>
             </td>
           </tr>
         `;
       })
       .join("");
   };
-
-  renderAwards(window.awardsData, "selected-awards");
-  renderResearchExperience(window.researchExperienceData, "research-experience");
-  renderIntro(window.introData, "intro-sidebar");
-  renderBiography(window.introData, "biography-content");
 
   const setupNavSpy = () => {
     const navLinks = Array.from(document.querySelectorAll(".nav-links a"));
@@ -172,11 +147,24 @@
 
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => setActive(link));
-    });
+    navLinks.forEach((link) => link.addEventListener("click", () => setActive(link)));
     updateActiveByScroll();
   };
 
-  setupNavSpy();
+  const initPage = () => {
+    renderIntro(window.introData, "intro-sidebar");
+    renderBiography(window.introData, "biography-content");
+    renderAwards(window.awardsData, "selected-awards");
+    renderResearchExperience(window.researchExperienceData, "research-experience");
+    if (typeof window.renderSelectedWorks === "function") {
+      window.renderSelectedWorks();
+    }
+    setupNavSpy();
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initPage, { once: true });
+  } else {
+    initPage();
+  }
 })();

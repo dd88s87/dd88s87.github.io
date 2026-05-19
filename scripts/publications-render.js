@@ -1,9 +1,4 @@
 (() => {
-  const data = window.publicationData;
-  if (!data) {
-    return;
-  }
-
   const highlightAuthor = (html) => {
     let text = String(html).replace(
       /<strong>Xuan Zhang<\/strong>/g,
@@ -31,12 +26,11 @@
             return `<a class="${cls}" href="${link.href}">${icon}${link.text}</a>`;
           })
           .join("");
-        const venueHtml = item.venue ? `${item.venue}
-                <br>` : "";
+        const venueHtml = item.venue ? `${item.venue}<br>` : "";
         const thumbHtml =
           item.image && item.image.src
-            ? `<a href="${item.image.src}"><img src="${item.image.src}" alt="${item.image.alt}" onerror="this.parentElement.outerHTML='<div class=\\'thumb-placeholder\\'>${item.title.split(':')[0]}</div>'"></a>`
-            : `<div class="thumb-placeholder">${item.placeholderText || "Teaser"}</div>`;
+            ? `<a href="${item.image.src}"><img src="${item.image.src}" alt="${item.image.alt || ""}"></a>`
+            : `<div class="thumb-placeholder thumb-placeholder-empty" aria-hidden="true"></div>`;
 
         return `
           <tr class="publication-row">
@@ -57,13 +51,12 @@
       })
       .join("");
 
-  const renderPublications = (items, targetId) => {
-    const container = document.getElementById(targetId);
-    if (!container) {
+  window.renderSelectedWorks = () => {
+    const data = window.publicationData;
+    const container = document.getElementById("selected-works");
+    if (!container || !data) {
       return;
     }
-    container.innerHTML = renderPublicationItems(items);
+    container.innerHTML = renderPublicationItems(data.selectedWorks);
   };
-
-  renderPublications(data.selectedWorks, "selected-works");
 })();

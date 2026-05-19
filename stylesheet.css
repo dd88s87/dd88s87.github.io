@@ -308,6 +308,14 @@ table.pub-table td.thumb-cell a:focus img {
   text-align: center;
 }
 
+.thumb-placeholder-empty {
+  background: #f8f9fb;
+  border: 1px dashed var(--border);
+  color: transparent;
+  font-size: 0;
+  padding: 0;
+}
+
 table.pub-table {
   border-collapse: separate;
   border-spacing: 0 14px;
