@@ -86,10 +86,10 @@
 
   window.publicationData = {
     selectedWorks: [
-      disppo,
       countCounts,
-      spear,
       diffusionReasoner,
+      disppo,
+      spear,
       guidingDiffusion
     ]
   };

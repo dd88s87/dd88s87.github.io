@@ -1,7 +1,4 @@
 (() => {
-  const orgAvatar = (name, bg) =>
-    `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&size=200&background=${bg}&color=ffffff&bold=true&format=png`;
-
   window.introData = {
     name: "Xuan Zhang",
     sidebarLines: [
@@ -42,39 +39,32 @@
       dates: "Aug. 2025 – Present"
     },
     {
-      logo: { src: orgAvatar("INF", "1a4fb5"), alt: "INF logo" },
+      logo: { src: "images/inf_logo.jpeg", alt: "INF logo" },
       title: "INF (Infinite Light-Year)",
       topic: "Reinforcement learning research and formal theorem proving with Lean4",
       location: "Shanghai, China",
       dates: "Apr. 2025 – Aug. 2025"
     },
     {
-      logo: { src: orgAvatar("SAIS", "0b7a5a"), alt: "Shanghai Academy of AI for Science logo" },
+      logo: { src: "images/aiforscience_logo.jpeg", alt: "Shanghai Academy of AI for Science logo" },
       title: "Shanghai Academy of AI for Science",
       topic: "Weather prediction in latent space with VAE + Swin Transformer",
       location: "Shanghai, China",
       dates: "Sep. 2024 – Apr. 2025"
     },
     {
-      logo: { src: orgAvatar("Bosch", "ea0016"), alt: "Bosch logo" },
+      logo: { src: "images/bosch_logo.jpg", alt: "Bosch logo" },
       title: "Bosch China Central Research",
       topic: "RAG & agent survey and innovation reports; internal knowledge-base Q&A platform",
       location: "Shanghai, China",
       dates: "Jan. 2024 – Jun. 2024"
     },
     {
-      logo: { src: orgAvatar("INF", "1a4fb5"), alt: "INF logo" },
+      logo: { src: "images/inf_logo.jpeg", alt: "INF logo" },
       title: "INF (Infinite Light-Year)",
       topic: "Medical large language models: data collection and training corpus construction",
       location: "Shanghai, China",
       dates: "Jul. 2023 – Nov. 2023"
-    },
-    {
-      logo: { src: orgAvatar("Fudan", "1768d1"), alt: "Fudan University logo" },
-      title: "Fudan University NLP Lab",
-      topic: "Gender bias in NLP: model evaluation and debiasing (Xiyuan undergraduate research program)",
-      location: "Shanghai, China",
-      dates: "Oct. 2022 – May 2023"
     }
   ];
 })();
