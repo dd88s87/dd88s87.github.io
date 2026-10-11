@@ -7,7 +7,7 @@
       { text: "Research Intern, Tencent Youtu Lab", level: "secondary" }
     ],
     bioParagraphs: [
-      "I'm a PhD student (2024–2029) at Fudan University and the Shanghai Innovation Institute, advised by Prof. <a href=\"https://scholar.google.com/citations?user=0Q7pN4cAAAAJ\">Yuan Qi</a>. My research focuses on reinforcement learning for LLM reasoning and agents, and world models.",
+      "I'm a PhD student (2024–2029) at Fudan University and the Shanghai Innovation Institute, advised by Prof. Yuan Qi. My research focuses on reinforcement learning for LLM reasoning and agents, and world models.",
       "I received my B.S. in Computer Science from Fudan University in 2024 (GPA 3.86/4.0, rank 1/102). I am currently a research intern at Tencent Youtu Lab."
     ],
     links: [
