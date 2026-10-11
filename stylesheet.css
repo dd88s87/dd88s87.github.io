@@ -635,6 +635,11 @@ h2 {
   display: block;
 }
 
+.org-logo[src="images/meituan_logo.png"] {
+  max-width: 260px;
+  margin-inline: auto;
+}
+
 .author-me {
   color: var(--text);
   font-weight: 700;

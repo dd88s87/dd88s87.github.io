@@ -32,6 +32,7 @@
 
   window.researchExperienceData = [
     {
+      logo: { src: "images/meituan_logo.png", alt: "Meituan Longcat logo" },
       title: "Meituan Longcat",
       topic: "Reinforcement Learning, Multi-agent",
       dates: "Aug. 2026 – Present"
