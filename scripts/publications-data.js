@@ -16,6 +16,7 @@
   `;
 
   const disppo = {
+    image: { src: "images/favicon/disppo.png", alt: "DisPPO distributional critic and actor training overview" },
     title: "DisPPO: Quantile-Based Distributional Reinforcement Learning for Large Language Models",
     authors: "Zhijian Zhou<sup>#</sup>, Long Li<sup>#</sup>, <strong>Xuan Zhang</strong><sup>#</sup>, Zongkai Liu, Yanting Miao, Yuchen Liu, Deshu Chen, Ke Li, Xing Sun, Ruixiao Jiang<sup>*</sup>, Xiaoyu Tan<sup>*</sup>, Chao Qu<sup>*</sup>, Yuan Qi<sup>*</sup>.",
     venue: '<span class="venue venue-icml">ICML</span>, 2026',
@@ -81,6 +82,7 @@
   };
 
   const internalizingTheFuture = {
+    image: { src: "images/favicon/worldmodel.jpg", alt: "Internalizing the Future three-stage training paradigm" },
     title: "Internalizing the Future: A Unified Agentic Training Paradigm for World Model Planning",
     authors: "<strong>Xuan Zhang</strong>, Zhijian Zhou, Lingfeng Qiao, Yulei Qin, Ke Li, Xing Sun, Xiaoyu Tan, Chao Qu, Yuan Qi.",
     venue: '<span class="venue venue-emnlp">EMNLP</span>, 2026',
