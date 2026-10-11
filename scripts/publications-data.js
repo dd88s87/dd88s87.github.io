@@ -20,12 +20,8 @@
     authors: "Zhijian Zhou<sup>#</sup>, Long Li<sup>#</sup>, <strong>Xuan Zhang</strong><sup>#</sup>, Zongkai Liu, Yanting Miao, Yuchen Liu, Deshu Chen, Ke Li, Xing Sun, Ruixiao Jiang<sup>*</sup>, Xiaoyu Tan<sup>*</sup>, Chao Qu<sup>*</sup>, Yuan Qi<sup>*</sup>.",
     venue: '<span class="venue venue-icml">ICML</span>, 2026',
     links: [
-      { html: '<span class="link-chip icml">ICML</span>' }
-    ],
-    extraHtml: `
-      <p></p>
-      <span class="pub-note">Accepted; preprint not yet public.</span>
-    `
+      { href: "https://openreview.net/forum?id=Tkdgg5uqNK", text: "OpenReview", className: "project", icon: "fa fa-file-text-o" }
+    ]
   };
 
   const countCounts = {
@@ -84,11 +80,23 @@
     extraHtml: ""
   };
 
+  const internalizingTheFuture = {
+    title: "Internalizing the Future: A Unified Agentic Training Paradigm for World Model Planning",
+    authors: "<strong>Xuan Zhang</strong>, Zhijian Zhou, Lingfeng Qiao, Yulei Qin, Ke Li, Xing Sun, Xiaoyu Tan, Chao Qu, Yuan Qi.",
+    venue: '<span class="venue venue-emnlp">EMNLP</span>, 2026',
+    links: [
+      { href: "https://arxiv.org/abs/2606.27483", text: "arXiv", className: "arxiv", icon: "ai ai-arxiv" }
+    ]
+  };
+
   window.publicationData = {
-    selectedWorks: [
+    mainWorks: [
       countCounts,
       diffusionReasoner,
       disppo,
+      internalizingTheFuture
+    ],
+    otherWorks: [
       spear,
       guidingDiffusion
     ]

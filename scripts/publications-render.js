@@ -51,12 +51,33 @@
       })
       .join("");
 
+  const renderPublicationGroup = (title, description, items) => {
+    if (!items || items.length === 0) {
+      return "";
+    }
+    return `
+      <tr class="pub-group-row">
+        <td class="pub-group-cell" colspan="2">
+          <div class="pub-group-header">
+            <h3 class="pub-group-title">${title}</h3>
+            <span class="pub-group-divider" aria-hidden="true"></span>
+          </div>
+          ${description ? `<p class="authors-line">${description}</p>` : ""}
+        </td>
+      </tr>
+      ${renderPublicationItems(items)}
+    `;
+  };
+
   window.renderSelectedWorks = () => {
     const data = window.publicationData;
     const container = document.getElementById("selected-works");
     if (!container || !data) {
       return;
     }
-    container.innerHTML = renderPublicationItems(data.selectedWorks);
+    container.innerHTML = [
+      renderPublicationGroup("Main Works", "First-author and co-first-author papers.", data.mainWorks),
+      renderPublicationGroup("Other Works", "", data.otherWorks)
+    ].join("");
   };
 })();
