@@ -89,6 +89,16 @@
     ]
   };
 
+  const categoricalCritics = {
+    title: "Start Classifying: Categorical Critics for LLM Reinforcement Learning",
+    authors: "Zhijian Zhou, Long Li, <strong>Xuan Zhang</strong>, Zongkai Liu, Yulei Qin, Ke Li, Xing Sun, Xiaoyu Tan, Chao Qu, Yuan Qi.",
+    venue: '<span class="venue venue-colm">COLM</span>, 2026',
+    links: [
+      { href: "https://openreview.net/forum?id=NBhmHJleqt", text: "OpenReview" },
+      { href: "https://arxiv.org/abs/2608.02181", text: "arXiv" }
+    ]
+  };
+
   window.publicationData = {
     mainWorks: [
       countCounts,
@@ -98,7 +108,8 @@
     ],
     otherWorks: [
       spear,
-      guidingDiffusion
+      guidingDiffusion,
+      categoricalCritics
     ]
   };
 })();

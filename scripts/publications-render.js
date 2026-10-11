@@ -51,7 +51,32 @@
       })
       .join("");
 
-  const renderPublicationGroup = (title, description, items) => {
+  const renderCompactPublicationItems = (items) => `
+    <tr class="other-works-row">
+      <td class="other-works-cell" colspan="2">
+        <ul class="other-works-list">
+          ${items.map((item) => {
+            const links = (item.links || [])
+              .filter((link) => link.href)
+              .map((link) => `<a href="${link.href}">${link.text}</a>`)
+              .join('<span aria-hidden="true"> · </span>');
+            return `
+              <li>
+                <div class="other-work-title">${item.title}</div>
+                <div class="other-work-authors">${highlightAuthor(item.authors)}</div>
+                <div class="other-work-meta">
+                  ${item.venue ? `<span>${item.venue}</span>` : ""}
+                  <span class="other-work-links">${links}</span>
+                </div>
+              </li>
+            `;
+          }).join("")}
+        </ul>
+      </td>
+    </tr>
+  `;
+
+  const renderPublicationGroup = (title, description, items, compact = false) => {
     if (!items || items.length === 0) {
       return "";
     }
@@ -65,7 +90,7 @@
           ${description ? `<p class="authors-line">${description}</p>` : ""}
         </td>
       </tr>
-      ${renderPublicationItems(items)}
+      ${compact ? renderCompactPublicationItems(items) : renderPublicationItems(items)}
     `;
   };
 
@@ -77,7 +102,7 @@
     }
     container.innerHTML = [
       renderPublicationGroup("Main Works", "First-author and co-first-author papers.", data.mainWorks),
-      renderPublicationGroup("Other Works", "", data.otherWorks)
+      renderPublicationGroup("Other Works", "", data.otherWorks, true)
     ].join("");
   };
 })();

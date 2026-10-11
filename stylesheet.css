@@ -349,6 +349,57 @@ table.pub-table tr.publication-row td:last-child {
   border-bottom-right-radius: 14px;
 }
 
+.other-works-cell {
+  padding: 0 20px 8px;
+}
+
+.other-works-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.other-works-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.other-works-list li:last-child {
+  border-bottom: none;
+}
+
+.other-work-title {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.other-work-authors {
+  margin-top: 3px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.other-work-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  margin-top: 3px;
+  font-size: 13px;
+}
+
+.other-work-meta .venue,
+.other-work-links a {
+  font-size: 13px;
+}
+
+.other-work-meta .venue {
+  padding: 0;
+  background: transparent;
+}
+
 .pub-group-row {
   filter: none;
 }
