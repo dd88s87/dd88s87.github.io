@@ -75,19 +75,25 @@
         const logoSrc = item.logo && item.logo.src ? item.logo.src : "";
         const logoAlt = item.logo && item.logo.alt ? item.logo.alt : "";
 
+        const logoHtml = logoSrc
+          ? `<img class="org-logo" src="${logoSrc}" alt="${logoAlt}">`
+          : "";
+        const topicHtml = item.topic
+          ? `<br><br><strong>Topic</strong>: ${item.topic}`
+          : "";
+        const locationHtml = item.location ? `${item.location}<br>` : "";
+
         return `
           <tr>
             <td class="thumb-cell">
-              <img class="org-logo" src="${logoSrc}" alt="${logoAlt}">
+              ${logoHtml}
             </td>
             <td class="content-cell">
               <span class="org-title">${item.title}</span>
-              <br><br>
-              <strong>Topic</strong>: ${item.topic}
+              ${topicHtml}
               ${mentorHtml}
               <br><br>
-              ${item.location}
-              <br>
+              ${locationHtml}
               ${item.dates}
             </td>
           </tr>

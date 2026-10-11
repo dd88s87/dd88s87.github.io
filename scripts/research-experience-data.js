@@ -1,11 +1,15 @@
 (() => {
   window.researchExperienceData = [
     {
+      title: "Meituan Longcat",
+      dates: "Aug. 2026 – Present"
+    },
+    {
       logo: { src: "images/Tencent_logo.png", alt: "Tencent Youtu Lab logo" },
       title: "Tencent Youtu Lab",
       topic: "Reinforcement learning; world models and code agents (data curation and training)",
       location: "Shanghai, China",
-      dates: "Aug. 2025 – Present"
+      dates: "Aug. 2025 – Aug. 2026"
     },
     {
       logo: { src: "images/inf_logo.jpeg", alt: "INF logo" },

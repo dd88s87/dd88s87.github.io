@@ -4,11 +4,11 @@
     sidebarLines: [
       { text: "PhD Student (2024–2029)", level: "primary" },
       { text: "Fudan University & SII", level: "primary" },
-      { text: "Research Intern, Tencent Youtu Lab", level: "secondary" }
+      { text: "Research Intern, Meituan Longcat", level: "secondary" }
     ],
     bioParagraphs: [
       "I'm a PhD student (2024–2029) at Fudan University and the Shanghai Innovation Institute, advised by Prof. Yuan Qi. My research focuses on reinforcement learning for LLM reasoning and agents, and world models.",
-      "I received my B.S. in Computer Science from Fudan University in 2024 (GPA 3.86/4.0, rank 1/102). I am currently a research intern at Tencent Youtu Lab."
+      "I received my B.S. in Computer Science from Fudan University in 2024 (GPA 3.86/4.0, rank 1/102). I am currently a research intern at Meituan Longcat."
     ],
     links: [
       { href: "mailto:24110240111@m.fudan.edu.cn", iconClass: "fa fa-envelope icon-lg icon-email", label: "Email" },
