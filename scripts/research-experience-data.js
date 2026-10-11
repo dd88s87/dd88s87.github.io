@@ -2,6 +2,7 @@
   window.researchExperienceData = [
     {
       title: "Meituan Longcat",
+      topic: "Reinforcement Learning, Multi-agent",
       dates: "Aug. 2026 – Present"
     },
     {
